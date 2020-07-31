@@ -55,7 +55,7 @@ export default {
 		}
 		options.baseUrl = options.baseUrl || this.config.baseUrl
 		options.dataType = options.dataType || this.config.dataType
-		options.url = options.baseUrl + options.url + "&key=4a0bae3cd72e47eb8483c9ee4add5dee"
+		options.url = options.baseUrl + options.url + "&key=xxx"
 		options.data = options.data || {}
 		options.method = options.method || this.config.method
 		
