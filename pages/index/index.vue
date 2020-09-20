@@ -79,6 +79,7 @@
 				</view>
 			</view>
 		</view>
+		<ad unit-id="adunit-05dbb4aa11e0f10a"></ad>
 
 		<view class="maxTitle">
 			7日天气
@@ -225,7 +226,9 @@
 		data() {
 			return {
 				title: 'Hello',
-				now: {},
+				now: {
+					fl:0,
+				},
 				update: {},
 				lifestyle: [],
 				basic: {},
