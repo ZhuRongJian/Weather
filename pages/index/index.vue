@@ -87,7 +87,7 @@
 		<view class="line"></view>
 		<view class="day7">
 			<template v-for="day in forecast">
-				<view class="oneday">
+				<view  class="oneday">
 					<view class="">{{day.date}}</view>
 					<view class="">{{day.tmp_max}}~{{day.tmp_min}}℃</view>
 					<view class="">{{day.cond_txt_d}}
@@ -208,7 +208,7 @@
 		</view>
 
 		<view class="createby">
-			developer：Oliver
+			developer：茂茂的帅爸爸
 		</view>
 
 
