@@ -34,6 +34,7 @@
 				</view>
 			</view>
 		</view>
+		<ad unit-id="adunit-e29d0cd6a28d3b10" ad-type="video" ad-theme="white"></ad>
 		<view class="nowinfo">
 			<view class="nowinfo-cell">
 				<text class="test-desc">体感温度(℃)</text> </br>
@@ -55,6 +56,7 @@
 				<text class="test-val">{{now.wind_sc}}</text>
 			</view>
 		</view>
+		
 		<view class="line"></view>
 		<view class="nowinfoDiv">
 			<view class="nowinfo">
@@ -87,7 +89,7 @@
 		<view class="line"></view>
 		<view class="day7">
 			<template v-for="day in forecast">
-				<view  class="oneday">
+				<view v-bind:key="day" class="oneday">
 					<view class="">{{day.date}}</view>
 					<view class="">{{day.tmp_max}}~{{day.tmp_min}}℃</view>
 					<view class="">{{day.cond_txt_d}}
@@ -105,7 +107,7 @@
 		<view class="line"></view>
 		<view class="lifeRowDiv">
 			<template v-for="item in lifestyle">
-				<view v-if="item.type=='comf'" class="lifeRow lifeRow1">
+				<view v-bind:key="item" v-if="item.type=='comf'" class="lifeRow lifeRow1">
 					<view class="imgDiv">
 						<image src="../../static/img/shushidu.png" mode=""></image>
 					</view>
@@ -116,7 +118,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view v-else-if="item.type=='cw'" class="lifeRow">
+				<view v-bind:key="item" v-else-if="item.type=='cw'" class="lifeRow">
 					<view class="imgDiv">
 						<image src="../../static/img/xiche.png" mode=""></image>
 					</view>
@@ -127,7 +129,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view v-else-if="item.type=='drsg'" class="lifeRow">
+				<view v-bind:key="item" v-else-if="item.type=='drsg'" class="lifeRow">
 					<view class="imgDiv">
 						<image src="../../static/img/chuanyi.png" mode=""></image>
 					</view>
@@ -138,7 +140,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view v-else-if="item.type=='flu'" class="lifeRow">
+				<view v-bind:key="item" v-else-if="item.type=='flu'" class="lifeRow">
 					<view class="imgDiv">
 						<image src="../../static/img/ganmao.png" mode=""></image>
 					</view>
@@ -149,7 +151,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view v-else-if="item.type=='sport'" class="lifeRow">
+				<view v-bind:key="item" v-else-if="item.type=='sport'" class="lifeRow">
 					<view class="imgDiv">
 						<image src="../../static/img/yundong.png" mode=""></image>
 					</view>
@@ -160,7 +162,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view v-else-if="item.type=='uv'" class="lifeRow">
+				<view v-bind:key="item" v-else-if="item.type=='uv'" class="lifeRow">
 					<view class="imgDiv">
 						<image src="../../static/img/ziwaixian.png" mode=""></image>
 					</view>
@@ -171,7 +173,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view v-else-if="item.type=='air'" class="lifeRow">
+				<view v-bind:key="item" v-else-if="item.type=='air'" class="lifeRow">
 					<view class="imgDiv">
 						<image src="../../static/img/kongqizhiliang.png" mode=""></image>
 					</view>
@@ -182,7 +184,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view v-else-if="item.type=='trav'" class="lifeRow">
+				<view v-bind:key="item" v-else-if="item.type=='trav'" class="lifeRow">
 					<view class="imgDiv">
 						<image src="../../static/img/taiyang.png" mode=""></image>
 					</view>
@@ -193,7 +195,7 @@
 						<view class="lifeDesc"> {{item.txt}}</view>
 					</view>
 				</view>
-				<view style="margin: 0px 10px;position: relative;">
+				<view v-bind:key="item" style="margin: 0px 10px;position: relative;">
 					<view class="lifeRowLine"></view>
 				</view>
 			</template>
@@ -267,6 +269,8 @@
 				}
 			})
 			this.getLocation();
+			this.showGG()
+			
 		},
 		methods: {
 			getLocation() {
@@ -332,6 +336,27 @@
 				uni.navigateToMiniProgram({
 					appId: 'wxcfad719efe6e6fad'
 				})
+			},
+			showGG(){
+				// 在页面中定义插屏广告
+				let interstitialAd = null
+				
+				// 在页面onLoad回调事件中创建插屏广告实例
+				if (wx.createInterstitialAd) {
+				  interstitialAd = wx.createInterstitialAd({
+				    adUnitId: 'adunit-5385a8aecb4c827f'
+				  })
+				  interstitialAd.onLoad(() => {})
+				  interstitialAd.onError((err) => {})
+				  interstitialAd.onClose(() => {})
+				}
+				
+				// 在适合的场景显示插屏广告
+				if (interstitialAd) {
+				  interstitialAd.show().catch((err) => {
+				    console.error(err)
+				  })
+				}
 			}
 		}
 	}
