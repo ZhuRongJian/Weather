@@ -81,7 +81,7 @@
 				</view>
 			</view>
 		</view>
-		<ad unit-id="adunit-05dbb4aa11e0f10a"></ad>
+		<!-- <ad unit-id="adunit-05dbb4aa11e0f10a"></ad> -->
 
 		<view class="maxTitle">
 			7日天气
@@ -269,8 +269,7 @@
 				}
 			})
 			this.getLocation();
-			this.showGG()
-			
+			// this.showGG()
 		},
 		methods: {
 			getLocation() {
